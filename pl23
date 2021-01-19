@@ -205,5 +205,43 @@ window.mainloop()
 
 
 
+# 6
+
+import tkinter
 
 
+def application():
+    file_write = open("steps.txt", "a")
+    file_read = open("steps.txt", "r")
+    data = file_read.read().split()
+    s = []
+    for i in data:
+        s.append(int(i))
+    steps_total.set(str(sum(s)))
+
+    file_write.write(str(daily_steps.get()) + "\n")
+    daily = int(daily_steps.get())
+    total = int(steps_total.get())
+    steps_total.set(str(daily + total))
+
+
+# window config
+window = tkinter.Tk()
+window.title("Pedometer")
+window.geometry("600x400")
+
+# widgets config
+# steps today
+tkinter.Label(window, width=30, text="Steps Today:").grid(row=0, column=0)
+daily_steps = tkinter.StringVar()
+tkinter.Entry(window, width=30, textvariable=daily_steps).grid(row=0, column=1)
+
+# steps total
+tkinter.Label(window, width=30, text="Total steps:").grid(row=1, column=0)
+steps_total = tkinter.StringVar()
+tkinter.Entry(window, width=30, textvariable=steps_total).grid(row=1, column=1)
+
+# output
+tkinter.Button(window, width=30, text="Save", command=application).grid(row=2, column=1)
+
+window.mainloop()
