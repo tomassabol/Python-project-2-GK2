@@ -61,3 +61,28 @@ bubble_1 = pad.create_oval((150 - size / 2), 150 - (size / 2), 150 + (size / 2),
 pad.bind_all("<Key>", Application)
 window.mainloop()
 
+
+# 3
+import tkinter
+
+size = 20
+
+
+# functions
+def stamp(event = None):
+    x = event.x
+    y = event.y
+    pad.create_oval(x - (size / 2), y - (size / 2), x + (size / 2), y + (size / 2), fill="lightgray")
+
+
+# window setup
+window = tkinter.Tk()
+window.title("stamp.py")
+
+# canvas setup
+pad = tkinter.Canvas(window, height=300, width=300, bg="#2a2a2a")
+pad.pack()
+pad.bind("<Button-1>", stamp)
+
+window.mainloop()
+
