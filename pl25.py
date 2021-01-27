@@ -86,3 +86,35 @@ pad.bind("<Button-1>", stamp)
 
 window.mainloop()
 
+
+
+# 4
+import tkinter
+
+size = 20
+
+
+# functions
+def stamp(event = None):
+    x = event.x
+    y = event.y
+    if x <= 300 and y <= 300:
+        pad.create_oval(x - (size / 2), y - (size / 2), x + (size / 2), y + (size / 2), fill="yellow")
+    elif x > 300 and y < 300:
+        pad.create_oval(x - (size / 2), y - (size / 2), x + (size / 2), y + (size / 2), fill="green")
+    elif x < 300 and y > 300:
+        pad.create_oval(x - (size / 2), y - (size / 2), x + (size / 2), y + (size / 2), fill="blue")
+    elif x >= 300 and y >= 300:
+        pad.create_oval(x - (size / 2), y - (size / 2), x + (size / 2), y + (size / 2), fill="red")
+
+
+# window setup
+window = tkinter.Tk()
+window.title("stamp.py")
+
+# canvas setup
+pad = tkinter.Canvas(window, height=600, width=600, bg="#2a2a2a")
+pad.pack()
+pad.bind("<Button-1>", stamp)
+
+window.mainloop()
