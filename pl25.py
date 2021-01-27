@@ -28,3 +28,36 @@ pad.bind_all("w", red_bubble)
 pad.bind_all("<space>", change_bubble_color)
 
 window.mainloop()
+
+
+# 2
+import tkinter
+
+size = 20
+
+
+def Application(event = None):
+    key = event.keysym
+    if key == "Left":
+        pad.move(bubble_1, -10, 0)
+    elif key == "Right":
+        pad.move(bubble_1, 10, 0)
+    elif key == "Up":
+        pad.move(bubble_1, 0, -10)
+    elif key == "Down":
+        pad.move(bubble_1, 0, 10)
+
+
+# window config
+window = tkinter.Tk()
+window.title("Bubble")
+
+# canvas
+pad = tkinter.Canvas(window, height=300, width=300, bg="#2a2a2a")
+pad.pack()
+
+bubble_1 = pad.create_oval((150 - size / 2), 150 - (size / 2), 150 + (size / 2), 150 + (size / 2),
+                               fill="lightgray")
+pad.bind_all("<Key>", Application)
+window.mainloop()
+
